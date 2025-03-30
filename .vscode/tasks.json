@@ -8,6 +8,7 @@
         "args":[
             "-std=c++17",
             "-I", "include",
+            "-I", "/opt/homebrew/include",
             "src/*.cpp",
             "-o", "build/toydb"
         ],

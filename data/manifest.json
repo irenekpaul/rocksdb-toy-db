@@ -1,0 +1,7 @@
+{
+    "last_flushed_seq": 0,
+    "sst_files": [
+        "data/sst_2.sst",
+        "data/sst_0.sst"
+    ]
+}
