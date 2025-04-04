@@ -108,3 +108,8 @@ void DB::reset_db() {
 
     std::cout << "[All data wiped]" << std::endl;
 }
+
+size_t DB::wal_size() const {
+    std::ifstream f(wal_path, std::ios::binary | std::ios::ate);
+    return f.tellg();  // Returns file size in bytes
+}

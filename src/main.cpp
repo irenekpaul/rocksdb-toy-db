@@ -1,6 +1,7 @@
 #include "db.h"
 #include <iostream>
 #include <sstream>
+#include <chrono>
 
 int main() {
     DB db("data/wal.log");
@@ -9,7 +10,18 @@ int main() {
     std::cout << "Toy RocksDB > ";
     while (std::getline(std::cin, cmd)) {
         if (cmd == "exit") break;
-        else if (cmd == "recover") db.recover();
+        else if (cmd == "recover") {
+            auto start = std::chrono::high_resolution_clock::now();
+            db.recover();
+            auto end = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+            std::cout << "[LOG] Recovery took " << duration << " microseconds.\n";
+
+            // Optional: Write to CSV
+            std::ofstream logf("recovery_log.csv", std::ios::app);
+            logf << db.wal_size() << "," << duration << "\n";
+            logf.close();
+        }
         else if (cmd == "dump") db.dump_memtable();
         else if (cmd.rfind("put", 0) == 0) {
             std::istringstream iss(cmd);

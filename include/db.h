@@ -17,6 +17,7 @@ public:
     void flush();
     void del(const std::string& key);
     static void reset_db();
+    size_t wal_size() const;
 
 private:
     Memtable memtable;
