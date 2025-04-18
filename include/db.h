@@ -17,8 +17,14 @@ public:
     void flush();
     void del(const std::string& key);
     static void reset_db();
+<<<<<<< Updated upstream
+=======
+    size_t wal_size();
+    void compact_level(int from_level);
+    std::vector<std::pair<std::string, std::string>> get_range(const std::string& start, const std::string& end);
+>>>>>>> Stashed changes
 
-private:
+    private:
     Memtable memtable;
     WAL wal;
     uint64_t seq_num;

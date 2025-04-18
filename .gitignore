@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+z_archive_YCSB/*
+build/*

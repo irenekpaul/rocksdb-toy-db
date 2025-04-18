@@ -1,7 +1,12 @@
 {
-    "last_flushed_seq": 0,
+    "last_flushed_seq": 40000,
     "sst_files": [
-        "data/sst_2.sst",
-        "data/sst_0.sst"
+        {
+            "filename": "data/L0_sst_40000.sst",
+            "level": 0,
+            "max_key": "x9999",
+            "min_key": "x0",
+            "seq_num": 40000
+        }
     ]
 }

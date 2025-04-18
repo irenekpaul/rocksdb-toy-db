@@ -26,14 +26,10 @@ const std::map<std::string, std::pair<std::optional<std::string>, uint64_t>>& Me
 }
 
 void Memtable::put(const std::string& key, const std::string& value, uint64_t seq_num) {
-    std::cout << "[Memtable] put: " << key << " = " << value << " [" << seq_num << "]" << std::endl;
-
     table[key] = {value, seq_num};
 }
 
 void Memtable::del(const std::string& key, uint64_t seq_num) {
-    std::cout << "[Memtable] del: " << key << " [" << seq_num << "]" << std::endl;
-
     table[key] = {std::nullopt, seq_num};
 }
 

@@ -31,9 +31,24 @@ std::optional<std::string> SSTReader::get_from_sst(const std::string& filepath, 
 
     while (ifs >> file_key >> value >> seq) {
         if (file_key == key) {
+            if (value == "__DELETE__") return std::nullopt;
             return value;
-        }
+        }        
     }
 
     return std::nullopt;
+}
+
+std::map<std::string, std::pair<std::string, uint64_t>> SSTReader::read_sst(const std::string& filepath) {
+    std::ifstream ifs(filepath);
+    std::map<std::string, std::pair<std::string, uint64_t>> result;
+    if (!ifs.is_open()) return result;
+
+    std::string key, val;
+    uint64_t seq;
+    while (ifs >> key >> val >> seq) {
+        result[key] = {val, seq};
+    }
+
+    return result;
 }

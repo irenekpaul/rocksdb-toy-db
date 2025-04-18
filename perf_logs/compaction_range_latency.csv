@@ -1,0 +1,9 @@
+load_size,compaction,range_time_ms
+10000,true,622
+20000,true,1212
+30000,true,2095
+40000,true,3521
+10000,false,598
+20000,false,1241
+30000,false,2260
+40000,false,2452

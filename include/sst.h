@@ -15,4 +15,6 @@ public:
 class SSTReader {
     public:
         static std::optional<std::string> get_from_sst(const std::string& filepath, const std::string& key);
+        static std::map<std::string, std::pair<std::string, uint64_t>> read_sst(const std::string& filepath);
+
     };

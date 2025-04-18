@@ -8,6 +8,7 @@ WAL::WAL(const std::string& path) : filepath(path) {}
 void WAL::append_put(uint64_t seq_num, const std::string& key, const std::string& value) {
     std::ofstream ofs(filepath, std::ios::app);
     ofs << "PUT " << seq_num << " " << key << " " << value << "\n";
+    std::cout << "[DEBUG] WAL::append_put writing: PUT " << seq_num << " " << key << " " << value << std::endl;
 }
 
 std::vector<std::tuple<uint64_t, std::string, std::string>> WAL::read_all() {
