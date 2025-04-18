@@ -31,5 +31,6 @@
 *.out
 *.app
 
-z_archive_YCSB/*
-build/*
+z_archive_YCSB/
+build/
+data/
